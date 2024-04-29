@@ -22,3 +22,6 @@ class Document(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name="Creation Date")
     signature_date = models.DateTimeField(null=True, blank=True, verbose_name="Signature Date")
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="User")
+
+    def __str__(self) -> str:
+        return self.name or '-'
