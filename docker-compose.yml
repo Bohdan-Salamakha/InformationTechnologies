@@ -1,0 +1,41 @@
+services:
+  web:
+    build: .
+    command: >
+      sh -c "poetry run python manage.py collectstatic --noinput &&
+             poetry run python manage.py migrate &&
+             poetry run gunicorn information_technologies.wsgi:application --bind 0.0.0.0:8000"
+    restart: always
+    volumes:
+      - static_volume:/usr/src/app/static
+    expose:
+      - 8000
+    env_file: .env
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:15
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file: .env
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB" ]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+    volumes:
+      - static_volume:/usr/src/app/static
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
+  static_volume:
