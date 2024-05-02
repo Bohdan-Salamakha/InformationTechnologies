@@ -2,9 +2,7 @@ services:
   web:
     build: .
     command: >
-      sh -c "poetry run python manage.py collectstatic --noinput &&
-             poetry run python manage.py migrate &&
-             poetry run gunicorn information_technologies.wsgi:application --bind 0.0.0.0:8000"
+      sh -c "./entrypoint.sh"
     restart: always
     volumes:
       - static_volume:/usr/src/app/static
@@ -16,7 +14,7 @@ services:
         condition: service_healthy
 
   db:
-    image: postgres:15
+    image: postgres:15-alpine3.19
     restart: always
     volumes:
       - postgres_data:/var/lib/postgresql/data/
@@ -25,7 +23,7 @@ services:
       test: [ "CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB" ]
       interval: 1s
       timeout: 5s
-      retries: 10
+      retries: 5
 
   nginx:
     build: ./nginx
