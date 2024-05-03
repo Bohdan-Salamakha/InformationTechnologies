@@ -12,6 +12,6 @@ RUN pip install --no-cache-dir poetry \
     && poetry install --with prod
 
 COPY . .
-RUN mkdir static && mkdir media && chmod +x entrypoint.sh
+RUN mkdir static && mkdir media && mkdir ssl && chmod +x entrypoint.sh && chmod 644 ssl
 
 EXPOSE 8000
