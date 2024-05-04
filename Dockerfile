@@ -15,7 +15,6 @@ COPY . .
 RUN mkdir -p static \
     && mkdir -p media \
     && mkdir -p ssl \
-    && chmod +x entrypoint.sh \
-    && chmod 644 ssl/*
+    && chmod +x entrypoint.sh
 
 EXPOSE 8000
