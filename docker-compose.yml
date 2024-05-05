@@ -10,7 +10,10 @@ services:
       - ssl_volume:/usr/src/app/ssl
     expose:
       - 8000
-    env_file: .env
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_HOST=db
     depends_on:
       db:
         condition: service_healthy
