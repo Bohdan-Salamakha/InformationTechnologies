@@ -36,6 +36,8 @@ services:
   nginx:
     build: ./nginx
     restart: always
+    env_file:
+      - .env
     ports:
       - 80:80
       - 443:443
