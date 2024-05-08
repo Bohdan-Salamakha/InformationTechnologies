@@ -112,9 +112,6 @@ services:
       - static_volume:/usr/src/app/static
       - media_volume:/usr/src/app/media
       - ./ssl:/usr/src/app/ssl:ro
-    depends_on:
-      web:
-        condition: service_started
 
   adminer:
     image: adminer
