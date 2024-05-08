@@ -176,3 +176,10 @@ CACHES = {
 # Session settings
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "sessions"
+
+# MongoDB
+MONGO_USERNAME = os.environ.get("MONGO_USERNAME")
+MONGO_PASSWORD = os.environ.get("MONGO_PASSWORD")
+MONGO_HOST = os.environ.get("MONGO_HOST", "mongo")
+MONGO_PORT = os.environ.get("MONGO_PORT", "27017")
+MONGO_NAME = os.environ.get("MONGO_NAME")

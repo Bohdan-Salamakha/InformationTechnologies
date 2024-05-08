@@ -8,3 +8,13 @@ class Employee(models.Model):
 
     class Meta:
         managed = False
+
+
+class Student(models.Model):
+    id = models.CharField(max_length=256, primary_key=True)
+    first_name = models.CharField(max_length=128)
+    last_name = models.CharField(max_length=128)
+    enrollment_year = models.IntegerField()
+
+    class Meta:
+        managed = False
