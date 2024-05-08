@@ -41,6 +41,7 @@ urlpatterns = [
     path("accounts/logout/", LogoutView.as_view(), name="logout"),
     path("accounts/login/", LoginView.as_view(), name="login"),
     path('lab1/', include('lab1.urls', namespace='lab1')),
+    path('non_rel_db/', include('non_rel_db.urls', namespace='non_rel_db')),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]

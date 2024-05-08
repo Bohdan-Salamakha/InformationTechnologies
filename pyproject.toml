@@ -13,6 +13,11 @@ python-dotenv = "^1.0.1"
 drf-yasg = "^1.21.7"
 psycopg2-binary = "^2.9.9"
 coverage = "^7.5.1"
+django-redis = "^5.4.0"
+setuptools = "^69.5.1"
+pip = "^24.0"
+pymongo = "^4.7.2"
+dnspython = "^2.6.1"
 
 
 [tool.poetry.group.prod.dependencies]
