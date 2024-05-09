@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # my apps
     'lab1.apps.Lab1Config',
+    'lab4.apps.Lab4Config',
     'non_rel_db.apps.NonRelDbConfig',
     # other apps
     'drf_yasg',
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'lab4.middleware.CustomExceptionHandlerMiddleware',
 ]
 
 ROOT_URLCONF = 'information_technologies.urls'
